@@ -21,7 +21,7 @@ void Map::IniciarMapa()
 		for (int GameMapY = 0; GameMapY < 28; GameMapY++) {
 			GameMap[GameMapX][GameMapY].setSize(Vector2f(32 - 1, 32 - 1));
 			GameMap[GameMapX][GameMapY].setFillColor(Color::Green);
-			GameMap[GameMapX][GameMapY].setPosition(sf::Vector2f(32 * GameMapX, 32 * GameMapY));
+			GameMap[GameMapX][GameMapY].setPosition(sf::Vector2f(0,0));
 		}
 	}
 }
