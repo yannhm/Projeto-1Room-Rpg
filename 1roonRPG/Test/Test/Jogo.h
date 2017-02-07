@@ -29,6 +29,7 @@ public:
 	void executar();
 	void finalizar();
 
+	void atualizarJogando();
 	void desenharJogando();
 
 };
