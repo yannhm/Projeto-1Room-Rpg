@@ -4,7 +4,7 @@
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Particula.h"
-
+#include "Map.h"
 
 using namespace sf;
 using namespace std;
@@ -16,6 +16,8 @@ private:
 	RenderWindow window;
 
 	Jogador *jogador;
+	Map *GameMap;
+
 	list<Particula> particula;
 	list<Inimigo> inimigos;
 
