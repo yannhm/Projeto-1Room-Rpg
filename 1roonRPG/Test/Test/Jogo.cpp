@@ -1,12 +1,13 @@
 #include "Jogo.h"
 
 
-
+///// testando p krl
+//////////////////////////////////////
 Jogo::Jogo()
 {
 }
 
-
+///////
 Jogo::~Jogo()
 {
 }

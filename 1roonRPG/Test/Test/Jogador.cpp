@@ -1,6 +1,6 @@
 #include "Jogador.h"
 
-
+///////// ei
 
 Jogador::Jogador()
 {

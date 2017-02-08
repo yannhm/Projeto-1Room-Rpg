@@ -1,10 +1,10 @@
 #include "Map.h"
 
-
+///////////
 
 Map::Map()
 {
-	GameMap
+	//GameMap
 }
 
 
@@ -16,3 +16,4 @@ void Map::IniciarMapa()
 {
 
 }
+///////// teste 42
