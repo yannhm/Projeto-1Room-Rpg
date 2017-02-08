@@ -11,7 +11,7 @@ Jogo::~Jogo()
 
 void Jogo::inicializar()
 {
-	window.create(sf::VideoMode(800, 600), "1roomRPG!");
+	window.create(sf::VideoMode(896, 896), "1roomRPG!");
 
 	jogador = new Jogador;
 	GameMap = new Map;
@@ -36,9 +36,10 @@ void Jogo::executar()
 		
 		/////////////////
 
-		jogador->mover();
+		
+		atualizarJogando();
 
-		jogador->desenhar(window);
+		desenharJogando(); //jogador->desenhar(window);
 
 		/////////////////
 		window.display();
@@ -50,9 +51,15 @@ void Jogo::finalizar()
 
 }
 
+void Jogo::atualizarJogando()
+{
+	jogador->mover();
+}
+
 void Jogo::desenharJogando()
 {
-	/*jogador->desenhar(window);
+	jogador->desenhar(window);
+	/*
 	for (list<Inimigo>::iterator it = inimigos.begin(); it != inimigos.end(); ++it)
 	{
 		it->desenhar(window);
@@ -60,5 +67,6 @@ void Jogo::desenharJogando()
 	for (list<Particula>::iterator it = particula.begin(); it != particula.end(); ++it)
 	{
 		it->desenhar(window);
-	}*/
+	}
+	*/
 }
