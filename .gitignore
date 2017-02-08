@@ -1,0 +1,5 @@
+*.suo
+1roonRPG/Test/RPG.VC.db
+*.exe
+1roonRPG/Test/Test/bin/RPG.exe
+*.obj

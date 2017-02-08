@@ -1,9 +1,4 @@
 ﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
 C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Test.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Jogador.cpp
-e:\documentos\github\projeto-1room-rpg\1roonrpg\test\test\jogador.cpp(37): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-e:\documentos\github\projeto-1room-rpg\1roonrpg\test\test\jogador.cpp(46): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-e:\documentos\github\projeto-1room-rpg\1roonrpg\test\test\jogador.cpp(55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-e:\documentos\github\projeto-1room-rpg\1roonrpg\test\test\jogador.cpp(64): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Test.vcxproj -> E:\Documentos\GitHub\Projeto-1Room-Rpg\1roonRPG\Test\Test\./bin\RPG.exe
   Test.vcxproj -> ./bin\RPG.pdb (Partial PDB)
