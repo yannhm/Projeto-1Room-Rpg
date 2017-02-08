@@ -14,7 +14,7 @@ Jogo::~Jogo()
 
 void Jogo::inicializar()
 {
-	window.create(sf::VideoMode(800, 600), "1roomRPG!");
+	window.create(sf::VideoMode(896, 896), "1roomRPG!");
 
 	jogador = new Jogador;
 	GameMap = new Map;
@@ -38,6 +38,8 @@ void Jogo::executar()
 		//GameMap->DesenharMapa(window);
 		
 		/////////////////
+
+		GameMap->DesenharMapa(window);
 
 		jogador->mover();
 
