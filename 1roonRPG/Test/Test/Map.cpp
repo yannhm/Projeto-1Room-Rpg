@@ -1,17 +1,13 @@
 #include "Map.h"
 
-///////////
+
 
 Map::Map()
 {
-<<<<<<< HEAD
-	//GameMap
-=======
 	GameMap = new RectangleShape *[28];
 	for (int GameMapIterator = 0; GameMapIterator < 28; GameMapIterator++) {
 		GameMap[GameMapIterator] = new RectangleShape[28];
 	}
->>>>>>> origin/master
 }
 
 
@@ -38,4 +34,3 @@ void Map::DesenharMapa(RenderWindow &window)
 		}
 	}
 }
-///////// teste 42
