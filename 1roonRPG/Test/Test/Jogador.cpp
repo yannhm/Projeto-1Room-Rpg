@@ -4,7 +4,7 @@
 
 Jogador::Jogador()
 {
-	velocidadeMovimento = 2;
+	velocidadeMovimento = 1;
 
 	textura.loadFromFile("Resource/Just_Test.png");
 	if (!textura.loadFromFile("Resource/Just_Test.png")) {
@@ -26,19 +26,41 @@ Jogador::~Jogador()
 void Jogador::mover()
 {
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
-		sprite.move(0, -velocidadeMovimento);
-		animar(velocidadeMovimento, 4, 133 / 4, 210 / 4);
+		
+		if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::D)) {
+			
+			sprite.move(0.f, -velocidadeMovimento * 0.707f);
+		}
+		else{
+			sprite.move(0.f, -velocidadeMovimento);
+		}
+		animar(velocidadeMovimento * 0.2, 4, 133 / 4, 210 / 4);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::S)) {
-		sprite.move(0, velocidadeMovimento);
-		animar(velocidadeMovimento, 4, 133 / 4, 210 / 4);
+		if (Keyboard::isKeyPressed(Keyboard::A) || Keyboard::isKeyPressed(Keyboard::D)) {
+			sprite.move(0.f, velocidadeMovimento * 0.707f);
+		}
+		else{
+			sprite.move(0.f, velocidadeMovimento);
+		}
+		animar(velocidadeMovimento * 0.2, 4, 133 / 4, 210 / 4);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::A)) {
-		sprite.move(-velocidadeMovimento, 0);
-		animar(velocidadeMovimento, 4, 133 / 4, 210 / 4);
+		if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::S)) {
+			sprite.move(-velocidadeMovimento * 0.707f, 0.f);
+		}
+		else {
+			sprite.move(-velocidadeMovimento, 0.f);
+		}
+		animar(velocidadeMovimento * 0.2, 4, 133 / 4, 210 / 4);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
-		sprite.move(velocidadeMovimento, 0);
-		animar(velocidadeMovimento, 4, 133 / 4, 210 / 4);
+		if (Keyboard::isKeyPressed(Keyboard::W) || Keyboard::isKeyPressed(Keyboard::S)) {
+			sprite.move(velocidadeMovimento * 0.707f, 0.f);
+		}
+		else {
+			sprite.move(velocidadeMovimento, 0.f);
+		}
+		animar(velocidadeMovimento * 0.2, 4, 133 / 4, 210 / 4);
 	}
 }

@@ -56,10 +56,9 @@ void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, in
 			SpriteConter = 0;
 }
 
-void Objeto::setPos(int X, int Y)
+void Objeto::setPos(float X, float Y)
 {
-	x = X;
-	y = Y;
+	sprite.setPosition(Vector2f(X, Y));
 }
 
 void Objeto::setCor(int R, int G, int B, int A)
@@ -74,10 +73,10 @@ void Objeto::setCor(Color & Cor)
 
 int Objeto::getX()
 {
-	return x;
+	return sprite.getPosition().x;
 }
 
 int Objeto::getY()
 {
-	return y;
+	return sprite.getPosition().y;
 }
