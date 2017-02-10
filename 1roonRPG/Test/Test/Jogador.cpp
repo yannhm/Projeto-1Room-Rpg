@@ -37,48 +37,53 @@ Jogador::~Jogador()
 
 void Jogador::mover()
 {
-	if (Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::S)) {
-		if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) {
+	if		(Keyboard::isKeyPressed(Keyboard::W) && !Keyboard::isKeyPressed(Keyboard::S)) 
+	{
+		if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) 
+		{
 
 			sprite.move(velocidadeMovimento * 0.707f, -velocidadeMovimento * 0.707f);
-			animar(velocidadeMovimento, NE, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, NE, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
-		else if (Keyboard::isKeyPressed(Keyboard::A)) {
+		else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
+		{
 			sprite.move(-velocidadeMovimento * 0.707f, -velocidadeMovimento * 0.707f);
-			animar(velocidadeMovimento, NO, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, NO, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 		else 
 		{
 			sprite.move(0.f, -velocidadeMovimento);
-			animar(velocidadeMovimento, N, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, N, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
-		
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::S)) {
-		if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) {
+	else if (Keyboard::isKeyPressed(Keyboard::S) && !Keyboard::isKeyPressed(Keyboard::W)) 
+	{
+		if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) 
+		{
 
 			sprite.move(velocidadeMovimento * 0.707f, velocidadeMovimento * 0.707f);
-			animar(velocidadeMovimento, SE, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, SE, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
-		else if (Keyboard::isKeyPressed(Keyboard::A)) {
+		else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
+		{
 			sprite.move(-velocidadeMovimento * 0.707f, velocidadeMovimento * 0.707f);
-			animar(velocidadeMovimento, SO, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, SO, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
-		else{
+		else
+		{
 			sprite.move(0.f, velocidadeMovimento);
-			animar(velocidadeMovimento, S, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+			animar(velocidadeMovimento, S, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
-		
 	}
-
-	else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) {
-		
+	else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
+	{
 		sprite.move(-velocidadeMovimento, 0.f);
-		animar(velocidadeMovimento, O, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+		animar(velocidadeMovimento, O, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 	}
-	else if (Keyboard::isKeyPressed(Keyboard::D)) {
+	else if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) 
+	{
 		sprite.move(velocidadeMovimento, 0.f);
-		animar(velocidadeMovimento, E, NUM_LADOS, sprite.getTextureRect().width, sprite.getTextureRect().height);
+		animar(velocidadeMovimento, E, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 	}
 }
 
@@ -92,7 +97,7 @@ void Jogador::animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, in
 	}
 
 	SpriteConter++;
-	if (SpriteConter == MaxNumberOfSpritesPerLine) {
+	if (SpriteConter == MaxNumberOfSpritesPerLine){
 		SpriteConter = 0;
 	}
 }

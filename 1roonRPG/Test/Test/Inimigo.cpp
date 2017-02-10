@@ -13,10 +13,10 @@ Inimigo::Inimigo()
 		cout << "Falha na Textura do Inimigo.\n";
 	}
 	sprite.setTexture(textura);
-	sprite.setTextureRect(IntRect(0, 0, 64, 32));
+	sprite.setTextureRect(IntRect(0, 0, 32, 32));
 
 	sprite.setScale(1.f, 1.f);
-	sprite.setPosition(80, 80);
+	sprite.setPosition(rand() % 886 + 5, rand() % 886 + 5);
 
 	
 

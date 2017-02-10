@@ -11,14 +11,15 @@ Jogo::~Jogo()
 
 void Jogo::inicializar()
 {
+	srand(time(0));
 	window.create(sf::VideoMode(896, 896), "1roomRPG!");
 
 	jogador = new Jogador;
 	GameMap = new Map;
 	
-	//for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 5; i++) {
 		inimigo.push_back(Inimigo());
-	//}
+	}
 
 
 	GameMap->IniciarMapa();

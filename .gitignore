@@ -3,3 +3,13 @@
 *.exe
 1roonRPG/Test/Test/bin/RPG.exe
 *.obj
+*.opendb
+*.exe
+1roonRPG/Test/Test/bin/RPG.ilk
+*.obj
+*.tlog
+*.pdb
+*.ilk
+*.ilk
+*.log
+*.idb

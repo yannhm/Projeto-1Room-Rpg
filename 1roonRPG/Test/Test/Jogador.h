@@ -13,6 +13,7 @@ enum Lado
 	NO,	//cima-esquerda
 	NUM_LADOS
 };
+const int NUM_ANIM = 4;
 
 class Jogador :
 	public Entidade
