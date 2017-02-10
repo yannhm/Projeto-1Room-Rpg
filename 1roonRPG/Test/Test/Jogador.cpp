@@ -14,6 +14,7 @@ Jogador::Jogador()
 	poder = 100;
 	criticoPoder = 50;
 
+	lado = S;
 
 	textura.loadFromFile("Resource/sprite0.png");
 	if (!textura.loadFromFile("Resource/sprite0.png")) {
@@ -26,13 +27,48 @@ Jogador::Jogador()
 	sprite.setTexture(textura);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
 
-
+	//particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, lado, 3.f, 200));
+	iteradorParticula = particula.begin();
 
 }
 
 
 Jogador::~Jogador()
 {
+}
+
+void Jogador::atualizar()
+{
+	mover();
+
+	if (Keyboard::isKeyPressed(Keyboard::Space)) {
+		atacar(BOLA_DE_FOGO);
+	};
+
+	
+
+}
+
+void Jogador::atacar(int IDhabilidade)
+{
+	switch (IDhabilidade)
+	{
+	case BOLA_DE_FOGO:
+		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, lado, 3.f, 200));
+		cout << particula.size() << endl;
+		break;
+	case BOLA_DE_GELO:
+
+		break;
+	case CHAMAS:
+
+		break;
+	case CONE_DE_GELO:
+
+		break;
+	default:
+		break;
+	}
 }
 
 void Jogador::mover()
@@ -101,3 +137,53 @@ void Jogador::animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, in
 		SpriteConter = 0;
 	}
 }
+
+list<Particula> Jogador::getListaParticula()
+{
+	return particula;
+}
+
+int Jogador::getSizeListaParticula()
+{
+	return particula.size();
+}
+
+
+
+list<Particula>::iterator Jogador::getIteradorParticula()
+{
+	return iteradorParticula;
+}
+
+void Jogador::beguinIteradorParticula()
+{
+	iteradorParticula = particula.begin();
+}
+
+void Jogador::proximoIteradorParticula()
+{
+	iteradorParticula++;
+}
+
+void Jogador::destruirParticulaIterador()
+{
+	particula.erase(iteradorParticula);
+	iteradorParticula = particula.begin();
+}
+
+bool Jogador::testaFimParticulaIterador()
+{
+	if (iteradorParticula == particula.end())
+		return true;
+	else
+		return false;
+}
+
+bool Jogador::testaInicioParticulaIterador()
+{
+	if (iteradorParticula == particula.begin())
+		return true;
+	else
+		return false;
+}
+

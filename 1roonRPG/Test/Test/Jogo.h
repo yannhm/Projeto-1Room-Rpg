@@ -18,7 +18,7 @@ private:
 	Jogador *jogador;
 	Map *GameMap;
 
-	list<Particula> particula;
+	//list<Particula> particula;
 	list<Inimigo> inimigo;
 
 public:

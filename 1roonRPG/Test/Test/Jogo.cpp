@@ -21,7 +21,6 @@ void Jogo::inicializar()
 		inimigo.push_back(Inimigo());
 	}
 
-
 	GameMap->IniciarMapa();
 }
 
@@ -59,7 +58,7 @@ void Jogo::finalizar()
 
 void Jogo::atualizarJogando()
 {
-	jogador->mover();
+	jogador->atualizar();
 }
 
 void Jogo::desenharJogando()
@@ -68,12 +67,18 @@ void Jogo::desenharJogando()
 	
 	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
 	{
-		it->desenhar(window);
+		//it->desenhar(window);
 	}
-	/*
-	for (list<Particula>::iterator it = particula.begin(); it != particula.end(); ++it)
+	//if (jogador->getSizeListaParticula() > 0) {
+	jogador->beguinIteradorParticula();
+	for (jogador->getIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
+	{
+		jogador->getIteradorParticula()->desenhar(window);
+	}
+	//}
+	/*for (list<Particula>::iterator it = particula->begin(); it != particula->end(); ++it)
 	{
 		it->desenhar(window);
-	}
-	*/
+	}*/
+	
 }

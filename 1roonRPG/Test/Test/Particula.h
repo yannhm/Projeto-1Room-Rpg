@@ -11,8 +11,9 @@ public:
 	Particula();
 	~Particula();
 
-	Particula(int Dano, float Angulo, float Velocidade = 0, int Tempo = 60);
+	Particula(float _x, float _y, int Dano, float Angulo, float Velocidade = 0, int Tempo = 60);
 
+	void atualizar();
 	void causarDano();
 	void destruir(); //se destroi
 
