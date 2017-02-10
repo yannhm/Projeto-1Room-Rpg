@@ -13,5 +13,8 @@ public:
 	~Jogador();
 
 	void mover();
+	void animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, int Height);
+
+	void atacar(int tipoAtaque);
 };
 

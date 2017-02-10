@@ -16,6 +16,11 @@ void Jogo::inicializar()
 	jogador = new Jogador;
 	GameMap = new Map;
 	
+	//for (int i = 0; i < 5; i++) {
+		inimigo.push_back(Inimigo());
+	//}
+
+
 	GameMap->IniciarMapa();
 }
 
@@ -59,11 +64,12 @@ void Jogo::atualizarJogando()
 void Jogo::desenharJogando()
 {
 	jogador->desenhar(window);
-	/*
-	for (list<Inimigo>::iterator it = inimigos.begin(); it != inimigos.end(); ++it)
+	
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
 	{
 		it->desenhar(window);
 	}
+	/*
 	for (list<Particula>::iterator it = particula.begin(); it != particula.end(); ++it)
 	{
 		it->desenhar(window);

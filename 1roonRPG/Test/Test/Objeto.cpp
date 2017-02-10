@@ -26,7 +26,7 @@ void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, in
 
 		//debug
 		//std::cout << SpriterTime.asSeconds() << std::endl;
-
+		/*
 		if (Keyboard::isKeyPressed(Keyboard::W)) {
 			//sprite.move(0, -Velocity);
 			//sleep(SpriterTime);
@@ -50,10 +50,12 @@ void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, in
 			//sprite.move(Velocity, 0);
 			sprite.setTextureRect(IntRect(SpriteConter * Width, Height * 2, Width, Height));
 		}
+		*/
 
 		SpriteConter++;
-		if (SpriteConter == MaxNumberOfSpritesPerLine)
+		if (SpriteConter == MaxNumberOfSpritesPerLine) {
 			SpriteConter = 0;
+		}
 }
 
 void Objeto::setPos(float X, float Y)

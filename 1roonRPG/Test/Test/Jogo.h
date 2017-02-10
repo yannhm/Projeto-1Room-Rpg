@@ -19,7 +19,7 @@ private:
 	Map *GameMap;
 
 	list<Particula> particula;
-	list<Inimigo> inimigos;
+	list<Inimigo> inimigo;
 
 public:
 	Jogo();
