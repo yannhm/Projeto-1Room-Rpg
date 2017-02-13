@@ -10,6 +10,8 @@ public:
 
 	void IniciarMapa();
 
+	void DesenharMapa(RenderWindow &Window);
+
 private:
 	RectangleShape **GameMap;
 	Texture TextureMap;

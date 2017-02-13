@@ -1,22 +1,27 @@
 #include "Jogo.h"
 
-
-
 Jogo::Jogo()
 {
 }
 
-
+///////
 Jogo::~Jogo()
 {
 }
 
 void Jogo::inicializar()
 {
-	window.create(sf::VideoMode(800, 600), "1roomRPG!");
+	srand(time(0));
+	window.create(sf::VideoMode(896, 896), "1roomRPG!");
 
 	jogador = new Jogador;
+	GameMap = new Map;
 	
+	for (int i = 0; i < 5; i++) {
+		inimigo.push_back(Inimigo());
+	}
+
+	GameMap->IniciarMapa();
 }
 
 void Jogo::executar()
@@ -31,11 +36,15 @@ void Jogo::executar()
 				window.close();
 		}
 		window.clear();
+		
+		//GameMap->DesenharMapa(window);
+		
 		/////////////////
 
-		jogador->mover();
+		
+		atualizarJogando();
 
-		jogador->desenhar(window);
+		desenharJogando(); //jogador->desenhar(window);
 
 		/////////////////
 		window.display();
@@ -47,15 +56,45 @@ void Jogo::finalizar()
 
 }
 
+void Jogo::atualizarJogando()
+{
+	jogador->atualizar();
+	if (jogador->getListaParticula().size() > 1) {
+		
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			if (jogador->getIteradorParticula()->getTempo() <= 0) {
+				jogador->destruirParticulaIterador();
+			}
+		}
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			jogador->getIteradorParticula()->atualizar();
+		}
+	}
+
+	
+}
+
 void Jogo::desenharJogando()
 {
-	/*jogador->desenhar(window);
-	for (list<Inimigo>::iterator it = inimigos.begin(); it != inimigos.end(); ++it)
+	jogador->desenhar(window);
+	
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
 	{
+		it->atualizar();
 		it->desenhar(window);
 	}
-	for (list<Particula>::iterator it = particula.begin(); it != particula.end(); ++it)
+	//if (jogador->getSizeListaParticula() > 0) {
+	//jogador->beguinIteradorParticula();
+	if (jogador->getListaParticula().size() > 1) {
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			jogador->getIteradorParticula()->desenhar(window);
+		}
+	}
+	
+	//}
+	/*for (list<Particula>::iterator it = particula->begin(); it != particula->end(); ++it)
 	{
 		it->desenhar(window);
 	}*/
+	
 }
