@@ -59,6 +59,17 @@ void Jogo::finalizar()
 void Jogo::atualizarJogando()
 {
 	jogador->atualizar();
+	if (jogador->getListaParticula().size() > 1) {
+		
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			if (jogador->getIteradorParticula()->getTempo() <= 0) {
+				jogador->destruirParticulaIterador();
+			}
+		}
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			jogador->getIteradorParticula()->atualizar();
+		}
+	}
 }
 
 void Jogo::desenharJogando()
@@ -70,11 +81,13 @@ void Jogo::desenharJogando()
 		//it->desenhar(window);
 	}
 	//if (jogador->getSizeListaParticula() > 0) {
-	jogador->beguinIteradorParticula();
-	for (jogador->getIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
-	{
-		jogador->getIteradorParticula()->desenhar(window);
+	//jogador->beguinIteradorParticula();
+	if (jogador->getListaParticula().size() > 1) {
+		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+			jogador->getIteradorParticula()->desenhar(window);
+		}
 	}
+	
 	//}
 	/*for (list<Particula>::iterator it = particula->begin(); it != particula->end(); ++it)
 	{

@@ -15,6 +15,8 @@ Jogador::Jogador()
 	criticoPoder = 50;
 
 	lado = S;
+	angulo = (225 / 180) * 3.14159f;
+
 
 	textura.loadFromFile("Resource/sprite0.png");
 	if (!textura.loadFromFile("Resource/sprite0.png")) {
@@ -47,6 +49,7 @@ void Jogador::atualizar()
 
 	
 
+
 }
 
 void Jogador::atacar(int IDhabilidade)
@@ -54,8 +57,7 @@ void Jogador::atacar(int IDhabilidade)
 	switch (IDhabilidade)
 	{
 	case BOLA_DE_FOGO:
-		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, lado, 3.f, 200));
-		cout << particula.size() << endl;
+		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, angulo, 1.f, 100));
 		break;
 	case BOLA_DE_GELO:
 
@@ -79,16 +81,19 @@ void Jogador::mover()
 		{
 
 			sprite.move(velocidadeMovimento * 0.707f, -velocidadeMovimento * 0.707f);
+			angulo = 45;
 			animar(velocidadeMovimento, NE, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
 		{
 			sprite.move(-velocidadeMovimento * 0.707f, -velocidadeMovimento * 0.707f);
+			angulo = 135;
 			animar(velocidadeMovimento, NO, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 		else 
 		{
 			sprite.move(0.f, -velocidadeMovimento);
+			angulo = 90;
 			animar(velocidadeMovimento, N, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 	}
@@ -98,27 +103,32 @@ void Jogador::mover()
 		{
 
 			sprite.move(velocidadeMovimento * 0.707f, velocidadeMovimento * 0.707f);
+			angulo = 315;
 			animar(velocidadeMovimento, SE, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 		else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
 		{
 			sprite.move(-velocidadeMovimento * 0.707f, velocidadeMovimento * 0.707f);
+			angulo = 225;
 			animar(velocidadeMovimento, SO, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 		else
 		{
 			sprite.move(0.f, velocidadeMovimento);
+			angulo = 270;
 			animar(velocidadeMovimento, S, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 		}
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::A) && !Keyboard::isKeyPressed(Keyboard::D)) 
 	{
 		sprite.move(-velocidadeMovimento, 0.f);
+		angulo = 180;
 		animar(velocidadeMovimento, O, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 	}
 	else if (Keyboard::isKeyPressed(Keyboard::D) && !Keyboard::isKeyPressed(Keyboard::A)) 
 	{
 		sprite.move(velocidadeMovimento, 0.f);
+		angulo = 0;
 		animar(velocidadeMovimento, E, NUM_ANIM, sprite.getTextureRect().width, sprite.getTextureRect().height);
 	}
 }

@@ -29,7 +29,7 @@ class Jogador :
 	public Entidade
 {
 private:
-	float velocidadeMovimento, aceleracao, criticoProbabilidade;
+	float velocidadeMovimento, aceleracao, criticoProbabilidade, angulo;
 	int MP, MPmax, espirito, poder, criticoPoder, lado;
 
 	list<Particula> particula;

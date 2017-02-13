@@ -14,3 +14,9 @@
 *.log
 *.idb
 *.obj
+*.pdb
+*.ilk
+*.tlog
+*.idb
+*.suo
+*.db
