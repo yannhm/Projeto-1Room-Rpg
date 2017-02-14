@@ -1,10 +1,9 @@
 #include "Map.h"
 
-///////////
+
 
 Map::Map()
 {
-	//GameMap
 	GameMap = new RectangleShape *[28];
 	for (int GameMapIterator = 0; GameMapIterator < 28; GameMapIterator++) {
 		GameMap[GameMapIterator] = new RectangleShape[28];
@@ -63,4 +62,3 @@ void Map::DesenharMapa(RenderWindow &window)
 	CriarLinhaDeParedes(0, 27, 0);
 	CriarLinhaDeParedes(0, 28, 27);
 }
-///////// teste 42

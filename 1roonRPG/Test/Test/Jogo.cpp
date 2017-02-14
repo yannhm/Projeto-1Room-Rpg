@@ -1,8 +1,5 @@
 #include "Jogo.h"
 
-
-///// testando p krl
-//////////////////////////////////////
 Jogo::Jogo()
 {
 }
@@ -39,11 +36,16 @@ void Jogo::executar()
 		
 		/////////////////
 
+
 		GameMap->DesenharMapa(window);
 
 		jogador->mover();
 
-		jogador->desenhar(window);
+		
+		atualizarJogando();
+
+
+		desenharJogando(); //jogador->desenhar(window);
 
 		/////////////////
 		window.display();
@@ -55,9 +57,15 @@ void Jogo::finalizar()
 
 }
 
+void Jogo::atualizarJogando()
+{
+	jogador->mover();
+}
+
 void Jogo::desenharJogando()
 {
-	/*jogador->desenhar(window);
+	jogador->desenhar(window);
+	/*
 	for (list<Inimigo>::iterator it = inimigos.begin(); it != inimigos.end(); ++it)
 	{
 		it->desenhar(window);
@@ -65,5 +73,6 @@ void Jogo::desenharJogando()
 	for (list<Particula>::iterator it = particula.begin(); it != particula.end(); ++it)
 	{
 		it->desenhar(window);
-	}*/
+	}
+	*/
 }
