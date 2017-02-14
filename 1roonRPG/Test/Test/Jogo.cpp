@@ -22,6 +22,10 @@ void Jogo::inicializar()
 	}
 
 	GameMap->IniciarMapa();
+	GameMap->CriarColunaDeParedes(0, 27, 0);
+	GameMap->CriarColunaDeParedes(0, 27, 27);
+	GameMap->CriarLinhaDeParedes(0, 27, 0);
+	GameMap->CriarLinhaDeParedes(0, 28, 27);
 }
 
 void Jogo::executar()
@@ -37,7 +41,7 @@ void Jogo::executar()
 		}
 		window.clear();
 		
-		//GameMap->DesenharMapa(window);
+		GameMap->DesenharMapa(window);
 		
 		/////////////////
 
