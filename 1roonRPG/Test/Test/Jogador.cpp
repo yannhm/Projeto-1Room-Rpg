@@ -17,7 +17,6 @@ Jogador::Jogador()
 	lado = S;
 	angulo = 270.f;
 
-
 	textura.loadFromFile("Resource/sprite0.png");
 	if (!textura.loadFromFile("Resource/sprite0.png")) {
 		cout << "Falha na Textura do Personagem.\n";
@@ -100,6 +99,7 @@ void Jogador::atualizar()
 	if (Joystick::isButtonPressed(0, 0)) {
 		atacar(BOLA_DE_FOGO, angulo);
 	}
+
 
 }
 

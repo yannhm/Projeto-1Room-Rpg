@@ -10,10 +10,13 @@ public:
 
 	void IniciarMapa();
 
+	void CriarColunaDeParedes(int YInicio, int YFinal, int XFixo);
+	void CriarLinhaDeParedes(int XInicio, int XFinal, int YFixo);
 	void DesenharMapa(RenderWindow &Window);
 
 private:
 	RectangleShape **GameMap;
 	Texture TextureMap;
+	Texture WallTextureMap;
 };
 
