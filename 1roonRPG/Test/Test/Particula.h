@@ -7,6 +7,7 @@ private:
 	//bool inimiga; // true se for de um inimigo, false se for pro player;	//bola aí algo
 	int dano, tempo;//quando o tempo acabar é destruido;
 	float vX, vY, angulo; // vX e vY são a velocidade conforme o angulo
+	Vector2f velocidadeAngular;
 public:
 	Particula();
 	~Particula();

@@ -15,7 +15,7 @@ Jogador::Jogador()
 	criticoPoder = 50;
 
 	lado = S;
-	angulo = (225 / 180) * 3.14159f;
+	angulo = 6.281f;
 
 
 	textura.loadFromFile("Resource/sprite0.png");
@@ -57,7 +57,7 @@ void Jogador::atacar(int IDhabilidade)
 	switch (IDhabilidade)
 	{
 	case BOLA_DE_FOGO:
-		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, angulo, 1.f, 100));
+		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, angulo, 6.f, 100));
 		break;
 	case BOLA_DE_GELO:
 

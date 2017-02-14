@@ -17,8 +17,11 @@ Particula::Particula(float _x, float _y, int Dano, float Angulo, float Velocidad
 	tempo = Tempo;
 	//velocidade = Velocidade;
 	angulo = Angulo;
-	vX = Velocidade * cosf(angulo);
-	vY = Velocidade * sinf(angulo);
+	vX = Velocidade * cosf((angulo / 180) * 3.14159f);
+	vY = Velocidade * -sinf((angulo / 180) * 3.14159f);
+	
+	
+
 
 	cout << "vX = " << vX << "\t\tvY = " << vY << endl;
 
@@ -29,8 +32,8 @@ Particula::Particula(float _x, float _y, int Dano, float Angulo, float Velocidad
 	}	//////////~~////////////  TEMOS QUE MUDAR ISTO!!!!!!!! /////////////~~///////////~~//////////~~/////////////~~////////~~//////
 	/////~~////////~~//////////~~////////~~////////////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~//////
 	
-	sprite.setScale(1.f, 1.f);
-	sprite.setPosition(_x, _y);
+	sprite.setScale(0.3f, 0.3f);
+	sprite.setPosition(_x + 24, _y + 24);
 
 	sprite.setTexture(textura);
 	sprite.setTextureRect(IntRect(0, 0, 32, 32));
