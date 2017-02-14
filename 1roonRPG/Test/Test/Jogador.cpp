@@ -32,7 +32,6 @@ Jogador::Jogador()
 
 	//particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, lado, 3.f, 200));
 	iteradorParticula = particula.begin();
-
 }
 
 
@@ -55,13 +54,6 @@ void Jogador::atualizar()
 	if (!Keyboard::isKeyPressed(Keyboard::Space)) {
 		Fire = true;
 	}
-
-
-
-
-	
-
-
 }
 
 void Jogador::atacar(int IDhabilidade)
@@ -190,7 +182,8 @@ void Jogador::proximoIteradorParticula()
 void Jogador::destruirParticulaIterador()
 {
 	particula.erase(iteradorParticula);
-	iteradorParticula = particula.begin();
+	if (particula.size() > 0)
+		iteradorParticula = particula.begin();
 }
 
 bool Jogador::testaFimParticulaIterador()
