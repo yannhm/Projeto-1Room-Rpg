@@ -49,21 +49,66 @@ void Jogador::atualizar()
 	
 	if (Keyboard::isKeyPressed(Keyboard::Space)) {
 		if (Fire) {
-			atacar(BOLA_DE_FOGO);
+			atacar(BOLA_DE_FOGO, angulo);
 			Fire = false;
 		};
 	}
 	if (!Keyboard::isKeyPressed(Keyboard::Space)) {
 		Fire = true;
 	}
+
+
+	if (Keyboard::isKeyPressed(Keyboard::Up) && !Keyboard::isKeyPressed(Keyboard::Down))
+	{
+		if (Keyboard::isKeyPressed(Keyboard::Right) && !Keyboard::isKeyPressed(Keyboard::Left))
+		{
+			atacar(BOLA_DE_FOGO, 45);
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Left) && !Keyboard::isKeyPressed(Keyboard::Right))
+		{
+			atacar(BOLA_DE_FOGO, 135);
+		}
+		else
+		{
+			atacar(BOLA_DE_FOGO, 90);
+		}
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Down) && !Keyboard::isKeyPressed(Keyboard::Up))
+	{
+		if (Keyboard::isKeyPressed(Keyboard::Right) && !Keyboard::isKeyPressed(Keyboard::Left))
+		{
+			atacar(BOLA_DE_FOGO, 315);
+		}
+		else if (Keyboard::isKeyPressed(Keyboard::Left) && !Keyboard::isKeyPressed(Keyboard::Right))
+		{
+			atacar(BOLA_DE_FOGO, 225);
+		}
+		else
+		{
+			atacar(BOLA_DE_FOGO, 270);
+		}
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Left) && !Keyboard::isKeyPressed(Keyboard::Right))
+	{
+		atacar(BOLA_DE_FOGO, 180);
+	}
+	else if (Keyboard::isKeyPressed(Keyboard::Right) && !Keyboard::isKeyPressed(Keyboard::Left))
+	{
+		atacar(BOLA_DE_FOGO, 0);
+	}
+
+	if (Joystick::isButtonPressed(0, 0)) {
+		atacar(BOLA_DE_FOGO, angulo);
+	}
+
 }
 
-void Jogador::atacar(int IDhabilidade)
+void Jogador::atacar(int IDhabilidade, float Angulo)
 {
 	switch (IDhabilidade)
 	{
 	case BOLA_DE_FOGO:
-		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, angulo, 6.f, 100));
+		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, Angulo, 6.f, 100));
 		break;
 	case BOLA_DE_GELO:
 

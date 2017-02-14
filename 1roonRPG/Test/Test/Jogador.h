@@ -46,7 +46,7 @@ public:
 
 	void atualizar();
 
-	void atacar(int IDhabilidade);
+	void atacar(int IDhabilidade, float Angulo);
 
 	void mover();
 	void animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, int Width, int Height);
