@@ -13,14 +13,19 @@ enum Skill
 
 enum Lado
 {
-	N,	//cima
-	NE,	//cima-direita
+
 	E,	//direita
-	SE,	//baixo-direita
-	S,	//baixo
-	SO,	//baixo-esquerda
-	O,	//esquerda
+	NE,	//cima-direita
+	N,	//cima
 	NO,	//cima-esquerda
+	O,	//esquerda
+	SO,	//baixo-esquerda
+	S,	//baixo
+	SE,	//baixo-direita
+	
+	
+	
+	
 	NUM_LADOS
 };
 const int NUM_ANIM = 4;
@@ -31,7 +36,7 @@ class Jogador :
 private:
 	float velocidadeMovimento, aceleracao, criticoProbabilidade, angulo;
 	int MP, MPmax, espirito, poder, criticoPoder, lado;
-
+	
 	list<Particula> particula;
 	list<Particula>::iterator iteradorParticula;
 

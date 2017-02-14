@@ -18,7 +18,7 @@ void Objeto::desenhar(RenderWindow &janela)
 
 void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, int Height)
 {
-		static int SpriteConter = 0;
+		static int SpriteCounter = 0;
 
 		//Clock SpriterClock;
 		//float SpriterTimer = SpriterClock.getElapsedTime().asSeconds();
@@ -52,9 +52,11 @@ void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, in
 		}
 		*/
 
-		SpriteConter++;
-		if (SpriteConter == MaxNumberOfSpritesPerLine) {
-			SpriteConter = 0;
+		sprite.setTextureRect(IntRect(SpriteCounter * Width, Height * 0, Width, Height));
+
+		SpriteCounter++;
+		if (SpriteCounter == MaxNumberOfSpritesPerLine) {
+			SpriteCounter = 0;
 		}
 }
 

@@ -13,6 +13,9 @@ Particula::~Particula()
 
 Particula::Particula(float _x, float _y, int Dano, float Angulo, float Velocidade, int Tempo)
 {
+	static Texture ParticleTexture;
+
+	ParticleTexture.loadFromFile("Resource/particulaTeste.png");
 	dano = Dano;
 	tempo = Tempo;
 	//velocidade = Velocidade;
@@ -24,20 +27,21 @@ Particula::Particula(float _x, float _y, int Dano, float Angulo, float Velocidad
 
 
 	cout << "vX = " << vX << "\t\tvY = " << vY << endl;
-
+	
 	/////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~//////
-	textura.loadFromFile("Resource/particulaTeste.png");///////////////~~////////~~/////////~~///////~~/////////////~~////////~~//////
-	if (!textura.loadFromFile("Resource/particulaTeste.png")) {/////////////~~////////~~////////////////~~////////~~//////////////
-		cout << "Falha na Textura da Particula.\n";/////////////////~~////////~~//////////////////////////~~////////~~//////////////////////
+	if (!ParticleTexture.loadFromFile("Resource/particulaTeste.png")) {/////////////~~////////~~////////////////~~////////~~//////////////
+		ParticleTexture.loadFromFile("Resource/particulaTeste.png");///////////////~~////////~~/////////~~///////~~/////////////~~////////~~//////
+	/////////////////~~////////~~//////////////////////////~~////////~~//////////////////////
 	}	//////////~~////////////  TEMOS QUE MUDAR ISTO!!!!!!!! /////////////~~///////////~~//////////~~/////////////~~////////~~//////
 	/////~~////////~~//////////~~////////~~////////////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~//////
-	
-	sprite.setScale(0.3f, 0.3f);
-	sprite.setPosition(_x + 24, _y + 24);
+	sprite.setOrigin(16, 16);
 
-	sprite.setTexture(textura);
+	sprite.setTexture(ParticleTexture);
 	sprite.setTextureRect(IntRect(0, 0, 32, 32));
 
+	sprite.setScale(1.0f, 1.0f);
+	sprite.setPosition(_x, _y);
+	sprite.setRotation(-angulo);
 }
 
 void Particula::atualizar()

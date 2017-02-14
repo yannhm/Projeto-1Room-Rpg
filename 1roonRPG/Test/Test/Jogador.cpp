@@ -15,7 +15,7 @@ Jogador::Jogador()
 	criticoPoder = 50;
 
 	lado = S;
-	angulo = 6.281f;
+	angulo = 270.f;
 
 
 	textura.loadFromFile("Resource/sprite0.png");
@@ -23,8 +23,10 @@ Jogador::Jogador()
 		cout << "Falha na Textura do Personagem.\n";
 	}
 
+	sprite.setOrigin(32, 32);
 	sprite.setScale(1.f, 1.f);
 	sprite.setPosition(400, 400);
+	
 
 	sprite.setTexture(textura);
 	sprite.setTextureRect(IntRect(0, 0, 64, 64));
@@ -41,15 +43,19 @@ Jogador::~Jogador()
 
 void Jogador::atualizar()
 {
+	//sprite.rotate(1);
 	mover();
-
-	if (Keyboard::isKeyPressed(Keyboard::Space)) {
-		atacar(BOLA_DE_FOGO);
-	};
-
+	static bool Fire = true;
 	
-
-
+	if (Keyboard::isKeyPressed(Keyboard::Space)) {
+		if (Fire) {
+			atacar(BOLA_DE_FOGO);
+			Fire = false;
+		};
+	}
+	if (!Keyboard::isKeyPressed(Keyboard::Space)) {
+		Fire = true;
+	}
 }
 
 void Jogador::atacar(int IDhabilidade)

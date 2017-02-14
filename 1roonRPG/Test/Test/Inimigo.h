@@ -11,5 +11,7 @@ public:
 	~Inimigo();
 
 	void atacar();
+	void atualizar();
+	//void animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, int Width, int Height);
 };
 

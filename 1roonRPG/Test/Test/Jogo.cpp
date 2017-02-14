@@ -70,6 +70,8 @@ void Jogo::atualizarJogando()
 			jogador->getIteradorParticula()->atualizar();
 		}
 	}
+
+	
 }
 
 void Jogo::desenharJogando()
@@ -78,7 +80,8 @@ void Jogo::desenharJogando()
 	
 	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
 	{
-		//it->desenhar(window);
+		it->atualizar();
+		it->desenhar(window);
 	}
 	//if (jogador->getSizeListaParticula() > 0) {
 	//jogador->beguinIteradorParticula();
