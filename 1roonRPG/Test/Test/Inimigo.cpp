@@ -16,7 +16,7 @@ Inimigo::Inimigo()
 	sprite.setTextureRect(IntRect(0, 0, 32, 32));
 
 	sprite.setScale(1.f, 1.f);
-	sprite.setPosition(rand() % 886 + 5, rand() % 886 + 5);
+	sprite.setPosition(rand() % 846 + 25, rand() % 846 + 25);
 
 	
 

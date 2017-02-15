@@ -23,17 +23,9 @@ Particula::Particula(float _x, float _y, int Dano, float Angulo, float Velocidad
 	vX = Velocidade * cosf((angulo / 180) * 3.14159f);
 	vY = Velocidade * -sinf((angulo / 180) * 3.14159f);
 	
-	
-
-
-	cout << "vX = " << vX << "\t\tvY = " << vY << endl;
-	
-	/////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~//////
-	if (!ParticleTexture.loadFromFile("Resource/particulaTeste.png")) {/////////////~~////////~~////////////////~~////////~~//////////////
-		ParticleTexture.loadFromFile("Resource/particulaTeste.png");///////////////~~////////~~/////////~~///////~~/////////////~~////////~~//////
-	/////////////////~~////////~~//////////////////////////~~////////~~//////////////////////
-	}	//////////~~////////////  TEMOS QUE MUDAR ISTO!!!!!!!! /////////////~~///////////~~//////////~~/////////////~~////////~~//////
-	/////~~////////~~//////////~~////////~~////////////~~////////~~///////////~~////////~~///////////~~////////~~///////////~~////////~~//////
+	/*if (!ParticleTexture.loadFromFile("Resource/particulaTeste.png")) {
+		ParticleTexture.loadFromFile("Resource/particulaTeste.png");
+	}*/
 	sprite.setOrigin(16, 16);
 
 	sprite.setTexture(ParticleTexture);
@@ -48,7 +40,7 @@ void Particula::atualizar()
 {
 	mover();
 	tempo--;
-	if (tempo < 0) {
+	if (tempo <= 0) {
 		destruir();
 	}
 }

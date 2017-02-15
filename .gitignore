@@ -20,3 +20,6 @@
 *.idb
 *.suo
 *.db
+*.blend
+*.exe
+*.ilk

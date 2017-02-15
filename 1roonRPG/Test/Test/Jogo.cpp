@@ -63,42 +63,87 @@ void Jogo::finalizar()
 void Jogo::atualizarJogando()
 {
 	jogador->atualizar();
-	if (jogador->getListaParticula().size() > 1) {
-		
-		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
-			if (jogador->getIteradorParticula()->getTempo() <= 0) {
-				jogador->destruirParticulaIterador();
+
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
+	{
+		it->atualizar();
+	}
+	
+	for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+		if (jogador->getIteradorParticula()->getTempo() <= 0) {
+			jogador->destruirParticulaIterador();
+			if (jogador->getSizeListaParticula() == 0) {
+				break;
 			}
 		}
-		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
-			jogador->getIteradorParticula()->atualizar();
-		}
 	}
+	for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+		jogador->getIteradorParticula()->atualizar();
+	}
+	
 
 	
 }
 
 void Jogo::desenharJogando()
 {
-	jogador->desenhar(window);
-	
-	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
-	{
-		it->atualizar();
-		it->desenhar(window);
-	}
-	//if (jogador->getSizeListaParticula() > 0) {
-	//jogador->beguinIteradorParticula();
-	if (jogador->getListaParticula().size() > 1) {
-		for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
-			jogador->getIteradorParticula()->desenhar(window);
+	//for (int _y = 0; _y <= window.getSize().y; _y++){
+
+		//if (jogador->getY() == _y){
+			jogador->desenhar(window);
+		//}
+
+		for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
+		{
+			//if (it->getY() == _y){
+				it->desenhar(window);
+			//}
 		}
-	}
-	
+		if (jogador->getSizeListaParticula() > 0)
+		{
+			jogador->beguinIteradorParticula();
+			if (jogador->getListaParticula().size() >= 1)
+			{
+				for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
+				{
+					//if (jogador->getIteradorParticula()->getY() == _y){
+						jogador->getIteradorParticula()->desenhar(window);
+					//}
+				}
+			}
+		}
 	//}
-	/*for (list<Particula>::iterator it = particula->begin(); it != particula->end(); ++it)
-	{
-		it->desenhar(window);
-	}*/
-	
 }
+/*
+void Jogo::desenharJogando()
+{
+	//for (int _y = 0; _y <= window.getSize().y; _y++) {
+
+		//if (jogador->getY() == _y) {
+			jogador->desenhar(window);
+		//}
+		
+		for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
+		{
+		//	if (it->getY() == _y) {
+				it->atualizar();
+				it->desenhar(window);
+		//	}
+		}
+		//if (jogador->getSizeListaParticula() > 0) {
+		//jogador->beguinIteradorParticula();
+		if (jogador->getListaParticula().size() >= 1) {
+			for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+		//		if (jogador->getIteradorParticula()->getY() == _y) {
+					jogador->getIteradorParticula()->desenhar(window);
+		//		}
+			}
+		}
+
+		//}
+		//for (list<Particula>::iterator it = particula->begin(); it != particula->end(); ++it)
+		//{
+		//	it->desenhar(window);
+		//}
+	//}
+}*/
