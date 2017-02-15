@@ -30,3 +30,8 @@ void Entidade::morrer()
 	// Evocar efeitos de morte
 	// Dropar itens
 }
+
+int Entidade::getHP()
+{
+	return HP;
+}

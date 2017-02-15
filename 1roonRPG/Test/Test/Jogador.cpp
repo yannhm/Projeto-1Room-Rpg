@@ -8,10 +8,12 @@ Jogador::Jogador()
 	aceleracao = 1.f;
 	criticoProbabilidade = 0.10f;
 
+	HPmax = 100;
+	HP = HPmax;
 	MPmax = 100;
 	MP = MPmax;
 	espirito = 10;
-	poder = 100;
+	poder = 10;
 	criticoPoder = 50;
 
 	lado = S;
@@ -224,6 +226,11 @@ void Jogador::beguinIteradorParticula()
 void Jogador::proximoIteradorParticula()
 {
 	iteradorParticula++;
+}
+
+void Jogador::anteriorIteradorParticula()
+{
+	iteradorParticula--;
 }
 
 void Jogador::destruirParticulaIterador()

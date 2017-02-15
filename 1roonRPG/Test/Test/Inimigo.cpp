@@ -5,6 +5,10 @@
 Inimigo::Inimigo()
 {
 	static Texture EnemyTexture;
+
+	HPmax = 80;
+	HP = HPmax;
+
 	velocidadeMovimento = 1.f;
 	aceleracao = 1.f;
 	poder = 50;

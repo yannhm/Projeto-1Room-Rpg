@@ -84,3 +84,8 @@ int Objeto::getY()
 {
 	return sprite.getPosition().y;
 }
+
+Sprite Objeto::getSprite()
+{
+	return sprite;
+}

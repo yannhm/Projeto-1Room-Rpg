@@ -13,7 +13,7 @@ public:
 	void receberDano(int dano);
 	void morrer();
 
-
+	int getHP();
 
 };
 

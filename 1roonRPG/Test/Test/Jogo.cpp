@@ -64,21 +64,66 @@ void Jogo::atualizarJogando()
 {
 	jogador->atualizar();
 
-	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it)
-	{
+	/// Inimigos ///
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it){
 		it->atualizar();
+		if (it->getHP() <= 0) {
+			list<Inimigo>::iterator aux = it;
+			aux++;
+			inimigo.erase(it);
+			it = aux;
+		}
 	}
-	
-	for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+	/*for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
 		if (jogador->getIteradorParticula()->getTempo() <= 0) {
 			jogador->destruirParticulaIterador();
 			if (jogador->getSizeListaParticula() == 0) {
 				break;
 			}
 		}
-	}
+	}*/
+	/// Particulas do Jogador ///
 	for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
 		jogador->getIteradorParticula()->atualizar();
+
+		/// colisão com os inimigos ///
+		for (list<Inimigo>::iterator inimigoIterador = inimigo.begin(); inimigoIterador != inimigo.end(); ++inimigoIterador) {
+			if (jogador->getIteradorParticula()->getSprite().getGlobalBounds().intersects(inimigoIterador->getSprite().getGlobalBounds())) {
+				list<Particula>::iterator parAux = jogador->getIteradorParticula();
+				parAux++;
+				
+				
+				inimigoIterador->receberDano(jogador->getIteradorParticula()->getDano());
+				if (inimigoIterador->getHP() <= 0) {
+					list<Inimigo>::iterator iniAux = inimigoIterador;
+					iniAux++;
+					inimigo.erase(inimigoIterador);
+					inimigoIterador = iniAux;
+					if (inimigo.size() == 0) {
+						break;
+					}
+				}
+
+				if (jogador->getSizeListaParticula() == 0) {
+					break;
+				}
+				jogador->destruirParticulaIterador();
+				jogador->getIteradorParticula() = parAux;			
+			}
+		}
+		if (jogador->getSizeListaParticula() == 0) {
+			break;
+		}
+		if (jogador->getIteradorParticula()->getTempo() <= 0) {
+			list<Particula>::iterator parAux = jogador->getIteradorParticula();
+			parAux++;
+			jogador->destruirParticulaIterador();
+
+			if (jogador->getSizeListaParticula() == 0) {
+				break;
+			}
+			jogador->getIteradorParticula() = parAux;
+		}
 	}
 	
 

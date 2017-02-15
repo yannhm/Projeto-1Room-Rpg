@@ -56,6 +56,11 @@ void Particula::destruir()
 	//se destroi
 }
 
+int Particula::getDano()
+{
+	return dano;
+}
+
 int Particula::getTempo()
 {
 	return tempo;

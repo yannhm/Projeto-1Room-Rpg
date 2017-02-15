@@ -25,5 +25,7 @@ public:
 
 	int getX();
 	int getY();
+
+	Sprite getSprite();
 };
 
