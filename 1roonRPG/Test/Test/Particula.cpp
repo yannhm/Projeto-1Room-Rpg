@@ -40,9 +40,7 @@ void Particula::atualizar()
 {
 	mover();
 	tempo--;
-	if (tempo <= 0) {
-		destruir();
-	}
+	
 }
 
 void Particula::mover()
@@ -50,11 +48,11 @@ void Particula::mover()
 	sprite.move(vX, vY);
 }
 
-void Particula::destruir()
-{
-	//causa dano
-	//se destroi
-}
+//void Particula::destruir()
+//{
+//	//causa dano
+//	//se destroi
+//}
 
 int Particula::getDano()
 {

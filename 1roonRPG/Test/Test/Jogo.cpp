@@ -64,16 +64,7 @@ void Jogo::atualizarJogando()
 {
 	jogador->atualizar();
 
-	/// Inimigos ///
-	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it){
-		it->atualizar();
-		if (it->getHP() <= 0) {
-			list<Inimigo>::iterator aux = it;
-			aux++;
-			inimigo.erase(it);
-			it = aux;
-		}
-	}
+
 	/*for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
 		if (jogador->getIteradorParticula()->getTempo() <= 0) {
 			jogador->destruirParticulaIterador();
@@ -83,35 +74,60 @@ void Jogo::atualizarJogando()
 		}
 	}*/
 	/// Particulas do Jogador ///
-	for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) {
+	for (jogador->beginIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula()) 
+	{
+		bool foidestruido = false;
 		jogador->getIteradorParticula()->atualizar();
 
 		/// colisão com os inimigos ///
 		for (list<Inimigo>::iterator inimigoIterador = inimigo.begin(); inimigoIterador != inimigo.end(); ++inimigoIterador) {
 			if (jogador->getIteradorParticula()->getSprite().getGlobalBounds().intersects(inimigoIterador->getSprite().getGlobalBounds())) {
-				list<Particula>::iterator parAux = jogador->getIteradorParticula();
-				parAux++;
+				list<Particula>::iterator parAux;
+				if (!jogador->testaInicioParticulaIterador()) {
+					parAux = jogador->getIteradorParticula();
+					parAux--;
+				}
 				
 				
 				inimigoIterador->receberDano(jogador->getIteradorParticula()->getDano());
 				if (inimigoIterador->getHP() <= 0) {
-					list<Inimigo>::iterator iniAux = inimigoIterador;
-					iniAux++;
-					inimigo.erase(inimigoIterador);
-					inimigoIterador = iniAux;
+					list<Inimigo>::iterator iniAux;
+					if (inimigoIterador != inimigo.begin()) {
+						iniAux = inimigoIterador;
+						iniAux--; 
+					}
+					
+					if (inimigoIterador != inimigo.begin()) {
+						inimigo.erase(inimigoIterador);
+						inimigoIterador = iniAux;
+					}
+					else {
+						inimigo.erase(inimigoIterador);
+						inimigoIterador = inimigo.begin();
+					}
 					if (inimigo.size() == 0) {
 						break;
 					}
 				}
 
+				
+				jogador->destruirParticulaIterador();
+				foidestruido = true;
+				if (!jogador->testaInicioParticulaIterador()) {
+					jogador->getIteradorParticula() = parAux;
+				}
 				if (jogador->getSizeListaParticula() == 0) {
 					break;
 				}
-				jogador->destruirParticulaIterador();
-				jogador->getIteradorParticula() = parAux;			
+			}
+			if (jogador->getSizeListaParticula() == 0) {
+				//break;
+			}
+			if (inimigo.size() == 0) {
+				break;
 			}
 		}
-		if (jogador->getSizeListaParticula() == 0) {
+		if (foidestruido) {
 			break;
 		}
 		if (jogador->getIteradorParticula()->getTempo() <= 0) {
@@ -123,10 +139,29 @@ void Jogo::atualizarJogando()
 				break;
 			}
 			jogador->getIteradorParticula() = parAux;
+			if (jogador->getSizeListaParticula() == 0) {
+				break;
+			}
 		}
 	}
 	
-
+	/// Inimigos ///
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it) {
+		it->atualizar();
+		if (it->getHP() <= 0) {
+			list<Inimigo>::iterator aux = it;
+			if (aux != inimigo.begin()) {
+				aux--;
+			}
+			inimigo.erase(it);
+			if (aux != inimigo.begin()) {
+				it = aux;
+			}
+			else {
+				it = inimigo.begin();
+			}
+		}
+	}
 	
 }
 
@@ -146,10 +181,10 @@ void Jogo::desenharJogando()
 		}
 		if (jogador->getSizeListaParticula() > 0)
 		{
-			jogador->beguinIteradorParticula();
+			jogador->beginIteradorParticula();
 			if (jogador->getListaParticula().size() >= 1)
 			{
-				for (jogador->beguinIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
+				for (jogador->beginIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
 				{
 					//if (jogador->getIteradorParticula()->getY() == _y){
 						jogador->getIteradorParticula()->desenhar(window);

@@ -56,7 +56,7 @@ public:
 	int getSizeListaParticula();
 
 	list<Particula>::iterator getIteradorParticula();
-	void beguinIteradorParticula();
+	void beginIteradorParticula();
 	void proximoIteradorParticula();
 	void anteriorIteradorParticula();
 

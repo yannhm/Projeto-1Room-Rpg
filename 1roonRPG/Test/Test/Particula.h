@@ -17,7 +17,7 @@ public:
 	void atualizar();
 	void mover();
 	void causarDano();
-	void destruir(); //se destroi
+	//void destruir(); //se destroi
 
 	int getDano();
 	int getTempo();

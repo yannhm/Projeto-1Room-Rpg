@@ -218,7 +218,7 @@ list<Particula>::iterator Jogador::getIteradorParticula()
 	return iteradorParticula;
 }
 
-void Jogador::beguinIteradorParticula()
+void Jogador::beginIteradorParticula()
 {
 	iteradorParticula = particula.begin();
 }
