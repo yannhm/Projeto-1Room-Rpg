@@ -1,6 +1,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <list>
+//#include <stdlib.h>     /* srand, rand */
+//#include <time.h>       /* time */
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Particula.h"

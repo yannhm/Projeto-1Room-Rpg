@@ -13,7 +13,7 @@ void Jogo::inicializar()
 {
 	srand(time(0));
 	window.create(sf::VideoMode(896, 896), "1roomRPG!");
-
+	
 	jogador = new Jogador;
 	GameMap = new Map;
 	
@@ -26,12 +26,15 @@ void Jogo::inicializar()
 	GameMap->CriarColunaDeParedes(0, 27, 27);
 	GameMap->CriarLinhaDeParedes(0, 27, 0);
 	GameMap->CriarLinhaDeParedes(0, 28, 27);
+
+	
 }
 
 void Jogo::executar()
 {
+	
 	window.setFramerateLimit(60);
-	while (window.isOpen())
+	while (window.isOpen() && !Keyboard::isKeyPressed(Keyboard::Escape))
 	{
 		Event event;
 		while (window.pollEvent(event))
@@ -45,7 +48,6 @@ void Jogo::executar()
 		
 		/////////////////
 
-		
 		atualizarJogando();
 
 		desenharJogando(); //jogador->desenhar(window);
@@ -62,6 +64,9 @@ void Jogo::finalizar()
 
 void Jogo::atualizarJogando()
 {
+
+	
+
 	jogador->atualizar();
 
 
@@ -124,7 +129,7 @@ void Jogo::atualizarJogando()
 				//break;
 			}
 			if (inimigo.size() == 0) {
-				break;
+				//break;
 			}
 		}
 		if (foidestruido) {
@@ -148,7 +153,8 @@ void Jogo::atualizarJogando()
 	/// Inimigos ///
 	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); ++it) {
 		it->atualizar();
-		if (it->getHP() <= 0) {
+		if (it->getHP() <= 0) 
+		{
 			list<Inimigo>::iterator aux = it;
 			if (aux != inimigo.begin()) {
 				aux--;
@@ -162,7 +168,25 @@ void Jogo::atualizarJogando()
 			}
 		}
 	}
-	
+
+
+	/// spawnar inimigos ///
+	if (rand() % 80 == 1) 
+	{
+		int r = rand() % 50;
+		if (r == 1) {
+			inimigo.push_back(Inimigo(BOSS));
+		}
+		else if (r > 38)
+		{
+			inimigo.push_back(Inimigo(BERSEKER));
+		}
+		else
+		{
+			inimigo.push_back(Inimigo(NORMAL));
+		}
+
+	}
 }
 
 void Jogo::desenharJogando()
@@ -227,3 +251,4 @@ void Jogo::desenharJogando()
 		//}
 	//}
 }*/
+

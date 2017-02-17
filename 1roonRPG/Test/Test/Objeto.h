@@ -13,6 +13,8 @@ protected:
 	Texture textura;
 	Sprite sprite;
 	RectangleShape boxColide;
+
+	float tempoAnim;
 public:
 	Objeto();
 	~Objeto();
@@ -25,6 +27,8 @@ public:
 
 	int getX();
 	int getY();
+
+	bool podeAnimar(float t);
 
 	Sprite getSprite();
 };

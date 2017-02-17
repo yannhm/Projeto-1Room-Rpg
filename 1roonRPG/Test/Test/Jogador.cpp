@@ -13,7 +13,7 @@ Jogador::Jogador()
 	MPmax = 100;
 	MP = MPmax;
 	espirito = 10;
-	poder = 10;
+	poder = 30;
 	criticoPoder = 50;
 
 	lado = S;

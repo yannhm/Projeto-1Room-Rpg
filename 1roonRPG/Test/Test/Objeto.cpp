@@ -4,6 +4,7 @@
 
 Objeto::Objeto()
 {
+	tempoAnim = clock();
 }
 
 
@@ -24,17 +25,18 @@ void Objeto::animar(float Velocity, int MaxNumberOfSpritesPerLine, int Width, in
 		//float SpriterTimer = SpriterClock.getElapsedTime().asSeconds();
 		//static Time SpriterTime = SpriterClock.getElapsedTime();
 
-		//debug
+		///////////debug
 		//std::cout << SpriterTime.asSeconds() << std::endl;
+		//
+		//if (Keyboard::isKeyPressed(Keyboard::W)) {
+		//	sprite.move(0, -Velocity);
+		//	sleep(SpriterTime);
+		//	if (SpriterTime >= seconds(0.1)) {
+		//	SpriterClock.restart();
+		//	sprite.setTextureRect(IntRect(SpriteCounter * Width, Height * 3, Width, Height));
+		//	}
+		//}
 		/*
-		if (Keyboard::isKeyPressed(Keyboard::W)) {
-			//sprite.move(0, -Velocity);
-			//sleep(SpriterTime);
-			//if (SpriterTime >= seconds(0.1)) {
-			//SpriterClock.restart();
-			sprite.setTextureRect(IntRect(SpriteConter * Width, Height * 3, Width, Height));
-			//}
-		}
 		if (Keyboard::isKeyPressed(Keyboard::S)) {
 			//SpriterClock.restart();
 			//sprite.move(0, Velocity);
@@ -83,6 +85,24 @@ int Objeto::getX()
 int Objeto::getY()
 {
 	return sprite.getPosition().y;
+}
+
+bool Objeto::podeAnimar(float t)
+{
+	int T =  clock() - tempoAnim;
+	cout << T << endl;
+	if (t  >= T) {
+		cout << T << "\n";
+		tempoAnim = clock();
+		
+		return true;
+	}
+	else
+	{
+		//cout << t <<  " + " << tempoAnim << " " << time(0) << "\n";
+		return false;
+	}
+	
 }
 
 Sprite Objeto::getSprite()
