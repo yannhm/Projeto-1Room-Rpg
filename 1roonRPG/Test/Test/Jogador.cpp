@@ -42,6 +42,11 @@ Jogador::~Jogador()
 {
 }
 
+float Jogador::GetAngulo()
+{
+	return angulo;
+}
+
 void Jogador::atualizar()
 {
 	//sprite.rotate(1);

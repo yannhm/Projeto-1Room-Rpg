@@ -5,6 +5,7 @@
 Objeto::Objeto()
 {
 	tempoAnim = clock();
+	srand(time(0));
 }
 
 

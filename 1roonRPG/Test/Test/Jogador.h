@@ -44,6 +44,8 @@ public:
 	Jogador();
 	~Jogador();
 
+	float GetAngulo();
+
 	void atualizar();
 
 	void atacar(int IDhabilidade, float Angulo);

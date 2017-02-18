@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 using namespace sf;

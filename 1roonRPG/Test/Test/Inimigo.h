@@ -1,5 +1,7 @@
 #pragma once
+#include <list>
 #include "Entidade.h"
+#include "Particula.h"
 
 enum TipoInimigo
 {
@@ -14,13 +16,18 @@ class Inimigo :
 private:
 	float velocidadeMovimento, aceleracao;
 	int tipo, poder;
+
+	list<Particula> particula;
+	list<Particula>::iterator IteradorParticula;
+
 public:
 	Inimigo();
 	~Inimigo();
 	Inimigo(int tipo);
 
-	void atacar();
+	void atacar(int AnguloDoJogador);
 	void atualizar();
+	void DesenharParticulas(RenderWindow &window);
 	//void animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, int Width, int Height);
 };
 

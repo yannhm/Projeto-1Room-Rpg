@@ -78,12 +78,30 @@ Inimigo::Inimigo(int tipo)
 	
 }
 
+void Inimigo::atacar(int AnguloDoJogador)
+{
+	int Dado = rand() % 10;
+	if (Dado < 3) {
+		particula.push_back(Particula(sprite.getPosition().x, sprite.getPosition().y, poder, AnguloDoJogador + 180, 3.f, 200));
+	}
+}
+
 void Inimigo::atualizar()
 {
 	if (podeAnimar(2.0f)) {
 		animar(velocidadeMovimento, 2, 32, 32);
 	}
 
+}
+
+void Inimigo::DesenharParticulas(RenderWindow & window)
+{
+	if (particula.size() > 0) {
+		for (IteradorParticula = particula.begin(); IteradorParticula != particula.end(); IteradorParticula++) {
+			IteradorParticula->atualizar();
+			IteradorParticula->desenhar(window);
+		}
+	}
 }
 
 //void Inimigo::animar(float Velocity, int lado, int MaxNumberOfSpritesPerLine, int Width, int Height)

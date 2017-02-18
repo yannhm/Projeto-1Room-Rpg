@@ -187,6 +187,12 @@ void Jogo::atualizarJogando()
 		}
 
 	}
+	for (list<Inimigo>::iterator it = inimigo.begin(); it != inimigo.end(); it++) {
+		int Dado = rand() % 100;
+		if (Dado < 7) {
+			it->atacar(jogador->GetAngulo());
+		}
+	}
 }
 
 void Jogo::desenharJogando()
@@ -201,6 +207,7 @@ void Jogo::desenharJogando()
 		{
 			//if (it->getY() == _y){
 				it->desenhar(window);
+				it->DesenharParticulas(window);
 			//}
 		}
 		if (jogador->getSizeListaParticula() > 0)
@@ -211,7 +218,7 @@ void Jogo::desenharJogando()
 				for (jogador->beginIteradorParticula(); !jogador->testaFimParticulaIterador(); jogador->proximoIteradorParticula())
 				{
 					//if (jogador->getIteradorParticula()->getY() == _y){
-						jogador->getIteradorParticula()->desenhar(window);
+					jogador->getIteradorParticula()->desenhar(window);
 					//}
 				}
 			}
